@@ -1,0 +1,17 @@
+{
+  "contracts": {
+    "nft": {
+      "appId": 470906003,
+      "appAddress": "J4CTLP7X5X6VT2MNKHF47B2XNMMYQI42BBXJWYG7UJGY7WANO4Q66F5QCQ"
+    },
+    "hub": {
+      "appId": 470904339,
+      "appAddress": "MYAFE3I3X5ASEMB3RNIDFC4H3CVTHDQ2YLC6WUDYJVVESQB3L5N3QF4ZA4"
+    },
+    "vrf": {
+      "appId": 470900611,
+      "appAddress": "6Y4TYD7JEDHHOIMYOFUOEBA6X5XTZDPAX6Q6RNQTT7SWRHEGRNHTETJVSI"
+    }
+  },
+  "escrowAddress": ""
+}

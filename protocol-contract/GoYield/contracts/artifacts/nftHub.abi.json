@@ -1,0 +1,61 @@
+{
+  "name": "nftHub",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "nftAppId",
+          "type": "uint64",
+          "desc": ""
+        },
+        {
+          "name": "vrfAppId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "depositToFolk",
+      "args": [
+        {
+          "name": "value",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "checkWinner",
+      "args": [
+        {
+          "name": "tokenId",
+          "type": "uint64",
+          "desc": ""
+        },
+        {
+          "name": "value",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    }
+  ]
+}

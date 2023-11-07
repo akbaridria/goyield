@@ -1,0 +1,43 @@
+{
+  "name": "goyield",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "generate-components": "algokit-generate-component contracts/artifacts/TestAlgo.json contracts/artifacts/components",
+    "generate-client-nft": "algokitgen generate -a contracts/artifacts/GoYieldNFT.json -o contracts/clients/GoYieldNFTClient.ts",
+    "compile-contract-nft": "tealscript contracts/GoYieldNFT.algo.ts contracts/artifacts",
+    "build-nft": "npm run compile-contract-nft && npm run generate-client-nft",
+    "generate-client-hub": "algokitgen generate -a contracts/artifacts/nftHub.json -o contracts/clients/NftHubClient.ts",
+    "compile-contract-hub": "tealscript contracts/nftHub.algo.ts contracts/artifacts",
+    "build-hub": "npm run compile-contract-hub && npm run generate-client-hub",
+    "generate-client-vrf": "algokitgen generate -a contracts/artifacts/ConsumeVRF.json -o contracts/clients/ConsumerVrfClient.ts",
+    "compile-contract-vrf": "tealscript contracts/consumeVrf.algo.ts contracts/artifacts",
+    "build-vrf": "npm run compile-contract-vrf && npm run generate-client-vrf",
+    "test": "npm run build && jest",
+    "lint": "eslint . --ext .ts",
+    "fix": "eslint . --ext .ts --fix"
+  },
+  "dependencies": {
+    "@algorandfoundation/algokit-utils": "^2.2.0",
+    "algosdk": "^2.4.0",
+    "folks-finance-js-sdk": "^0.12.1",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@algorandfoundation/algokit-client-generator": "^2.2.1",
+    "@algorandfoundation/tealscript": "^0.60.1",
+    "@jest/globals": "^29.5.0",
+    "@joe-p/algokit-generate-component": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "jest": "^29.5.0",
+    "js-sha512": "^0.8.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "5.0.2"
+  }
+}

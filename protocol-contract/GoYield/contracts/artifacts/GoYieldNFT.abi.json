@@ -1,0 +1,275 @@
+{
+  "name": "GoYieldNFT",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "_name",
+          "type": "string",
+          "desc": ""
+        },
+        {
+          "name": "_symbol",
+          "type": "string",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_ownerOf",
+      "args": [
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "address",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_tokenURI",
+      "args": [
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "string",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_getImage",
+      "args": [
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "string",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_totalSupply",
+      "args": [],
+      "desc": "",
+      "returns": {
+        "type": "uint64",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_getApproved",
+      "args": [
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "address",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_isApprovedForAll",
+      "args": [
+        {
+          "name": "_owner",
+          "type": "address",
+          "desc": ""
+        },
+        {
+          "name": "_operator",
+          "type": "address",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "bool",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_balanceOf",
+      "args": [
+        {
+          "name": "_owner",
+          "type": "address",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "uint64",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_custom_getAllTokenIdsByAddr",
+      "args": [
+        {
+          "name": "_owner",
+          "type": "address",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "uint64[]",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_custom_getTokenDetail",
+      "args": [
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "(address,string,string,address)",
+        "desc": ""
+      }
+    },
+    {
+      "name": "udpdateTemplate",
+      "args": [
+        {
+          "name": "_template",
+          "type": "string",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_approve",
+      "args": [
+        {
+          "name": "_approved",
+          "type": "address",
+          "desc": ""
+        },
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_setApprovalForAll",
+      "args": [
+        {
+          "name": "_operator",
+          "type": "address",
+          "desc": ""
+        },
+        {
+          "name": "_approved",
+          "type": "bool",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "arc72_transferFrom",
+      "args": [
+        {
+          "name": "_from",
+          "type": "address",
+          "desc": ""
+        },
+        {
+          "name": "_to",
+          "type": "address",
+          "desc": ""
+        },
+        {
+          "name": "_tokenId",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "mint",
+      "args": [
+        {
+          "name": "backgroundColor",
+          "type": "string",
+          "desc": ""
+        },
+        {
+          "name": "objectColor",
+          "type": "string",
+          "desc": ""
+        },
+        {
+          "name": "translateX",
+          "type": "string",
+          "desc": ""
+        },
+        {
+          "name": "translateY",
+          "type": "string",
+          "desc": ""
+        },
+        {
+          "name": "to",
+          "type": "address",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    }
+  ]
+}

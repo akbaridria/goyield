@@ -1,0 +1,68 @@
+{
+  "name": "ConsumeVRF",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "randomOracleApp",
+          "type": "uint64",
+          "desc": ""
+        },
+        {
+          "name": "_round",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "getRound",
+      "args": [],
+      "desc": "",
+      "returns": {
+        "type": "uint64",
+        "desc": ""
+      }
+    },
+    {
+      "name": "getWinners",
+      "args": [],
+      "desc": "",
+      "returns": {
+        "type": "uint64[3]",
+        "desc": ""
+      }
+    },
+    {
+      "name": "getRandomBytes",
+      "args": [],
+      "desc": "",
+      "returns": {
+        "type": "uint64[3]",
+        "desc": ""
+      }
+    },
+    {
+      "name": "upateRound",
+      "args": [
+        {
+          "name": "value",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    }
+  ]
+}
