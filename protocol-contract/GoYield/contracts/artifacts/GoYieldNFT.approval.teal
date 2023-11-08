@@ -1021,11 +1021,11 @@ mint:
 	assert
 
 	// contracts/GoYieldNFT.algo.ts:152
-	// verifyTxn(this.txnGroup[0], { amount: { greaterThanEqualTo: 100_000 } })
+	// verifyTxn(this.txnGroup[0], { amount: { greaterThanEqualTo: 10_000_000 } })
 	// verify amount
 	int 0
 	gtxns Amount
-	int 100_000
+	int 10_000_000
 	>=
 	assert
 

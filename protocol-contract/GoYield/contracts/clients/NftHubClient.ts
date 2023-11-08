@@ -5,7 +5,7 @@
  * requires: @algorandfoundation/algokit-utils: ^2
  */
 import * as algokit from '@algorandfoundation/algokit-utils'
-import type {
+import {
   AppCallTransactionResult,
   AppCallTransactionResultOfType,
   CoreAppCallArgs,
@@ -14,17 +14,16 @@ import type {
   TealTemplateParams,
   ABIAppCallArg,
 } from '@algorandfoundation/algokit-utils/types/app'
-import type {
+import {
   AppClientCallCoreParams,
   AppClientCompilationParams,
   AppClientDeployCoreParams,
   AppDetails,
   ApplicationClient,
 } from '@algorandfoundation/algokit-utils/types/app-client'
-import type { AppSpec } from '@algorandfoundation/algokit-utils/types/app-spec'
-import type { SendTransactionResult, TransactionToSign, SendTransactionFrom } from '@algorandfoundation/algokit-utils/types/transaction'
-import type { TransactionWithSigner } from 'algosdk'
-import { Algodv2, OnApplicationComplete, Transaction, AtomicTransactionComposer } from 'algosdk'
+import { AppSpec } from '@algorandfoundation/algokit-utils/types/app-spec'
+import { SendTransactionResult, TransactionToSign, SendTransactionFrom } from '@algorandfoundation/algokit-utils/types/transaction'
+import { Algodv2, OnApplicationComplete, Transaction, TransactionWithSigner, AtomicTransactionComposer } from 'algosdk'
 export const APP_SPEC: AppSpec = {
   "hints": {
     "createApplication(uint64,uint64)void": {

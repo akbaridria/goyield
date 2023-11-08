@@ -149,7 +149,7 @@ class GoYieldNFT extends Contract {
     assert(this.counter.value < 1000);
 
     verifyTxn(this.txnGroup[0], { typeEnum: TransactionType.Payment });
-    verifyTxn(this.txnGroup[0], { amount: { greaterThanEqualTo: 100_000 } });
+    verifyTxn(this.txnGroup[0], { amount: { greaterThanEqualTo: 10_000_000 } });
     verifyTxn(this.txnGroup[0], { receiver: this.app.creator });
 
     verifyTxn(this.txnGroup[1], { typeEnum: TransactionType.Payment });
