@@ -3,6 +3,9 @@ import { DM_Sans } from 'next/font/google'
 import './globals.css'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { Modal } from '@/components/Modal'
+import { XMark } from '@/components/Icons'
+import { Providers } from './Providers'
 
 const inter = DM_Sans({ subsets: ['latin'] })
 
@@ -19,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className='mx-auto'>
-          <Header />
+        <Providers>
+          <div className='mx-auto'>
+            <Header />
             {children}
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   )

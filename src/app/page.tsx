@@ -1,15 +1,18 @@
+'use client'
+
 import { Button } from "@/components/Button";
 import { Arrow } from "@/components/Icons";
 import { Divider } from "./component/Divider";
 import { listBenefits } from "@/utils";
 import { Accordion } from "@/components/Accordion";
 import datas from '@/datas/data.json';
+import Link from "next/link";
 
 /* eslint-disable @next/next/no-img-element */
 export default function Home() {
   return (
     <div>
-      <section className="container mx-auto p-4 min-h-[calc(100vh-100px)]">
+      <section className="container mx-auto p-4 max-h-[750px]">
         <div className="grid grid-grid-cols-1 md:grid-cols-2 items-center justify-center">
           <div>
             <div className="text-[2rem] md:text-[3.5rem] text-center md:text-left font-bold leading-tight">
@@ -29,13 +32,15 @@ export default function Home() {
               of revenue shared among all NFT holders. Join us and shape the
               future of ownership with GoYieldNFT!
             </div>
-            <div className="flex items-center justify-center md:justify-start">
-              <Button>
-                <div className="flex items-center gap-2 font-semibold">
-                  Mint now
-                  <Arrow customClass="w-5 h-5 rotate-[315deg]" />
-                </div>
-              </Button>
+            <div className="flex items-center justify-center gap-4 md:justify-start">
+              <Link href="/mint">
+                <Button onclick={() => { }}>
+                  <div className="flex items-center font-semibold">
+                    Mint now
+                  </div>
+                </Button>
+              </Link>
+              <Link href="#" className="flex items-center gap-1">Learn More <Arrow customClass="w-5 h-5 rotate-[315deg]" /> </Link>
             </div>
           </div>
           <div className="flex items-center justify-center">

@@ -11,6 +11,10 @@
     {
       "name": "Reward",
       "link": "/reward"
+    },
+    {
+      "name": "Account",
+      "link": "/account"
     }
   ],
   "listRoadmap": [
