@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 export const Mint = () => {
-  const [color, setColor] = useState('');
-  const [background, setBackground] = useState('');
+  const [color, setColor] = useState('#BB004B');
+  const [background, setBackground] = useState('#FF0066');
 
   const randomColor = () => "#000000".replace(/0/g, () => (~~(Math.random() * 16)).toString(16));
 

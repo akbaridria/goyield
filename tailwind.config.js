@@ -19,6 +19,7 @@ module.exports = {
       },
       colors: {
         greyHalf: 'rgba(255, 255, 255, 0.25)',
+        primary: '#1f152b',
       }
     },
   },
