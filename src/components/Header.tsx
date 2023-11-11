@@ -52,13 +52,8 @@ export const Header = () => {
   const pathname = usePathname();
   const [active, setActive] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const { providers, activeAccount } = useWallet();
-  const [isConnected, setConnect] = useState(false);
-
-  useEffect(() => {
-    setConnect(!!activeAccount);
-  }, [activeAccount])
-
+  const { providers, activeAccount, isActive, signTransactions } = useWallet();
+  
   return (
     <div className="border-b-[1px] border-[rgba(131,131,131,0.25)] sticky top-0 z-[100] bg-[#1F152B] shadow-md">
       <div className="flex items-center justify-between p-4 container mx-auto font-bold">
@@ -73,7 +68,7 @@ export const Header = () => {
           }
         </div>
         {
-          !isConnected && <div className="hidden sm:block" onClick={() => setOpenModal(true)}>
+          !isActive && <div className="hidden sm:block" onClick={() => setOpenModal(true)}>
           <Button onclick={() => setOpenModal(true)}>Connect Wallet</Button>
         </div>
         }
@@ -81,7 +76,7 @@ export const Header = () => {
           <Hamburger customClass="w-6 h-6" />
         </div>
         {
-          isConnected && <div className="flex items-center gap-2 hidden md:flex">
+          isActive && <div className="flex items-center gap-2 hidden md:flex">
           Connected <span className="block w-4 h-4 bg-green-600 rounded-full"></span>
         </div>
         }
@@ -89,7 +84,7 @@ export const Header = () => {
       </div>
 
       {/* modal  */}
-      <Modal width="450px" open={openModal}>
+      <Modal width="450px" open={openModal && !(isActive)}>
         <div className=''>
           <div className='text-center p-6'>
             <div className='text-lg font-bold'>Connect Your Wallet</div>

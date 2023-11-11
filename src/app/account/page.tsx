@@ -8,8 +8,8 @@ export const Account = () => {
     <div className="min-h-screen">
       <div className="bg-black border-b-[1px] border-greyHalf h-40">
         <div className="container mx-auto flex relative h-full">
-          <div className="h-32 w-32 rounded-full bg-primary flex items-center justify-center border-[1px] border-greyHalf absolute -bottom-16 left-[1rem]">
-            <User customClass="w-12 h-12" />
+          <div className="h-40 w-40 rounded-full bg-primary flex items-center justify-center border-[1px] border-greyHalf absolute -bottom-16 left-[1rem]">
+            <User customClass="w-16 h-16 stroke-greyHalf" />
           </div>
         </div>
       </div>
