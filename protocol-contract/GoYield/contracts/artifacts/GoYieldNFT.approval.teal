@@ -967,17 +967,21 @@ if4_else:
 if4_end:
 	retsub
 
-// mint(address,string,string,string,string)void
+// mint(address,string,string,string,string,string)void
 abi_route_mint:
 	byte 0x; dup // push empty bytes to fill the stack frame for this subroutine's local variables
 
 	// to: address
-	txna ApplicationArgs 5
+	txna ApplicationArgs 6
 	dup
 	len
 	int 32
 	==
 	assert
+
+	// tokenUri: string
+	txna ApplicationArgs 5
+	extract 2 0
 
 	// translateY: string
 	txna ApplicationArgs 4
@@ -995,13 +999,13 @@ abi_route_mint:
 	txna ApplicationArgs 1
 	extract 2 0
 
-	// execute mint(address,string,string,string,string)void
+	// execute mint(address,string,string,string,string,string)void
 	callsub mint
 	int 1
 	return
 
 mint:
-	proto 7 0
+	proto 8 0
 
 	// contracts/GoYieldNFT.algo.ts:149
 	// assert(this.counter.value < 1000)
@@ -1011,7 +1015,16 @@ mint:
 	<
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:151
+	// contracts/GoYieldNFT.algo.ts:150
+	// assert(this.txn.sender === this.app.creator)
+	txn Sender
+	txna Applications 0
+	app_params_get AppCreator
+	assert
+	==
+	assert
+
+	// contracts/GoYieldNFT.algo.ts:152
 	// verifyTxn(this.txnGroup[0], { typeEnum: TransactionType.Payment })
 	// verify typeEnum
 	int 0
@@ -1020,7 +1033,7 @@ mint:
 	==
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:152
+	// contracts/GoYieldNFT.algo.ts:153
 	// verifyTxn(this.txnGroup[0], { amount: { greaterThanEqualTo: 10_000_000 } })
 	// verify amount
 	int 0
@@ -1029,7 +1042,7 @@ mint:
 	>=
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:153
+	// contracts/GoYieldNFT.algo.ts:154
 	// verifyTxn(this.txnGroup[0], { receiver: this.app.creator })
 	// verify receiver
 	int 0
@@ -1040,7 +1053,7 @@ mint:
 	==
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:155
+	// contracts/GoYieldNFT.algo.ts:156
 	// verifyTxn(this.txnGroup[1], { typeEnum: TransactionType.Payment })
 	// verify typeEnum
 	int 1
@@ -1049,7 +1062,7 @@ mint:
 	==
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:156
+	// contracts/GoYieldNFT.algo.ts:157
 	// verifyTxn(this.txnGroup[1], { receiver: this.app.address })
 	// verify receiver
 	int 1
@@ -1058,7 +1071,7 @@ mint:
 	==
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:157
+	// contracts/GoYieldNFT.algo.ts:158
 	// verifyTxn(this.txnGroup[1], { amount: { greaterThanEqualTo: 1_000_000 } })
 	// verify amount
 	int 1
@@ -1067,35 +1080,41 @@ mint:
 	>=
 	assert
 
-	// contracts/GoYieldNFT.algo.ts:159
+	// contracts/GoYieldNFT.algo.ts:160
 	// template: string = this.svgTemplate(0).value
 	byte 0x74656d706c6174650000000000000000
 	box_get
 	assert
 	extract 2 0
-	frame_bury -6 // template: string
+	frame_bury -7 // template: string
 
-	// contracts/GoYieldNFT.algo.ts:161
+	// contracts/GoYieldNFT.algo.ts:162
 	// token: Token = {
 	//       owner: to,
-	//       tokenUri: 'https://github.com/algorandfoundation/ARCs',
+	//       tokenUri: tokenUri,
 	//       image: concat(concat(concat(concat(concat(substring3(template, 0, 205), backgroundColor), concat(substring3(template, 205, 238), translateX)), concat(' ', translateY)), concat(substring3(template, 239, 568), objectColor)), substring3(template, 568, 587)),
 	//       control: globals.zeroAddress,
 	//     }
 	byte 0x // initial head
 	byte 0x // initial tail
 	byte 0x0044 // initial head offset
-	frame_dig -5 // to: address
+	frame_dig -6 // to: address
 	callsub process_static_tuple_element
-	byte 0x002a68747470733a2f2f6769746875622e636f6d2f616c676f72616e64666f756e646174696f6e2f41524373
+	frame_dig -5 // tokenUri: bytes
+	dup
+	len
+	itob
+	extract 6 2
+	swap
+	concat
 	callsub process_dynamic_tuple_element
-	frame_dig -6 // template: string
+	frame_dig -7 // template: string
 	int 0
 	int 205
 	substring3
 	frame_dig -1 // backgroundColor: bytes
 	concat
-	frame_dig -6 // template: string
+	frame_dig -7 // template: string
 	int 205
 	int 238
 	substring3
@@ -1106,14 +1125,14 @@ mint:
 	frame_dig -4 // translateY: bytes
 	concat
 	concat
-	frame_dig -6 // template: string
+	frame_dig -7 // template: string
 	int 239
 	int 568
 	substring3
 	frame_dig -2 // objectColor: bytes
 	concat
 	concat
-	frame_dig -6 // template: string
+	frame_dig -7 // template: string
 	int 568
 	int 587
 	substring3
@@ -1129,9 +1148,9 @@ mint:
 	callsub process_static_tuple_element
 	pop // pop head offset
 	concat // concat head and tail
-	frame_bury -7 // token: Token
+	frame_bury -8 // token: Token
 
-	// contracts/GoYieldNFT.algo.ts:168
+	// contracts/GoYieldNFT.algo.ts:169
 	// this.tokenBox(this.counter.value).value = token
 	byte 0x636f756e746572 // "counter"
 	app_global_get
@@ -1139,22 +1158,22 @@ mint:
 	dup
 	box_del
 	pop
-	frame_dig -7 // token: Token
+	frame_dig -8 // token: Token
 	box_put
 
 	// if5_condition
-	// contracts/GoYieldNFT.algo.ts:169
+	// contracts/GoYieldNFT.algo.ts:170
 	// this.ownerBox(to).exists
-	frame_dig -5 // to: address
+	frame_dig -6 // to: address
 	box_len
 	swap
 	pop
 	bz if5_else
 
 	// if5_consequent
-	// contracts/GoYieldNFT.algo.ts:170
+	// contracts/GoYieldNFT.algo.ts:171
 	// this.ownerBox(to).value.push(this.counter.value)
-	frame_dig -5 // to: address
+	frame_dig -6 // to: address
 	box_get
 	assert
 	extract 2 0
@@ -1162,7 +1181,7 @@ mint:
 	app_global_get
 	itob
 	concat
-	frame_dig -5 // to: address
+	frame_dig -6 // to: address
 	dup
 	box_del
 	pop
@@ -1179,9 +1198,9 @@ mint:
 	b if5_end
 
 if5_else:
-	// contracts/GoYieldNFT.algo.ts:172
+	// contracts/GoYieldNFT.algo.ts:173
 	// this.ownerBox(to).value = [this.counter.value]
-	frame_dig -5 // to: address
+	frame_dig -6 // to: address
 	dup
 	box_del
 	pop
@@ -1199,7 +1218,7 @@ if5_else:
 	box_put
 
 if5_end:
-	// contracts/GoYieldNFT.algo.ts:174
+	// contracts/GoYieldNFT.algo.ts:175
 	// this.counter.value = this.counter.value + 1
 	byte 0x636f756e746572 // "counter"
 	byte 0x636f756e746572 // "counter"
@@ -1229,7 +1248,7 @@ call_NoOp:
 	method "arc72_approve(address,uint64)void"
 	method "arc72_setApprovalForAll(address,bool)void"
 	method "arc72_transferFrom(address,address,uint64)void"
-	method "mint(string,string,string,string,address)void"
+	method "mint(string,string,string,string,string,address)void"
 	txna ApplicationArgs 0
 	match abi_route_arc72_ownerOf abi_route_arc72_tokenURI abi_route_arc72_getImage abi_route_arc72_totalSupply abi_route_arc72_getApproved abi_route_arc72_isApprovedForAll abi_route_arc72_balanceOf abi_route_arc72_custom_getAllTokenIdsByAddr abi_route_arc72_custom_getTokenDetail abi_route_udpdateTemplate abi_route_arc72_approve abi_route_arc72_setApprovalForAll abi_route_arc72_transferFrom abi_route_mint
 	err

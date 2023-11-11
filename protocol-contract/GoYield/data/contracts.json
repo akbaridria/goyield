@@ -1,17 +1,18 @@
 {
   "contracts": {
     "nft": {
-      "appId": 470979670,
-      "appAddress": "C52DDK5ZIE46K3RY4LJ4WT3OEVABKGJL7KYWUC2CK2PU5ANLID4OAI6C2Q"
+      "appId": 477347800,
+      "appAddress": "4U4AEZW3H3QFBC2KE2A4HLMNUY45P3GSX7QICDRREPYTA3LPNXYHQN2EBQ"
     },
     "hub": {
-      "appId": 470986354,
-      "appAddress": "6TW4A2F57TZKEB5V2TURRD7RRQESOAINX54A6VDZZJ26QWK52Z6HXNSMFY"
+      "appId": 477349508,
+      "appAddress": "KUCKET56LAHNLRKGH44ZH4SUNZLXMRFKCU375PEJPBX6HNTZSIKWMFSBSY"
     },
     "vrf": {
-      "appId": 470981680,
-      "appAddress": "TATI2E4LADEG3T6V44PX4QLCITTBO45GFDRAK6L37OHHUFGZL2SFUOZ2JQ"
+      "appId": 477349083,
+      "appAddress": "XO7KCJJVME6WI25VQJFXI4QDITDTNKEKXO6IGNHBXUU4OUMPTBOVHIX65A"
     }
   },
-  "escrowAddress": ""
+  "escrowAddress": "",
+  "testnetRpc": "https://testnet-api.algonode.cloud"
 }

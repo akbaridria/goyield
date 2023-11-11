@@ -260,6 +260,11 @@
           "desc": ""
         },
         {
+          "name": "tokenUri",
+          "type": "string",
+          "desc": ""
+        },
+        {
           "name": "to",
           "type": "address",
           "desc": ""

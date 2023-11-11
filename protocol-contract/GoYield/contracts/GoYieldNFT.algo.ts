@@ -145,9 +145,10 @@ class GoYieldNFT extends Contract {
     } else throw Error('not authorize');
   }
 
-  mint(backgroundColor: string, objectColor: string, translateX: string, translateY: string, to: Address): void {
+  mint(backgroundColor: string, objectColor: string, translateX: string, translateY: string, tokenUri: string, to: Address): void {
     assert(this.counter.value < 1000);
-
+    assert(this.txn.sender === this.app.creator);
+    
     verifyTxn(this.txnGroup[0], { typeEnum: TransactionType.Payment });
     verifyTxn(this.txnGroup[0], { amount: { greaterThanEqualTo: 10_000_000 } });
     verifyTxn(this.txnGroup[0], { receiver: this.app.creator });
@@ -160,7 +161,7 @@ class GoYieldNFT extends Contract {
 
     const token: Token = {
       owner: to,
-      tokenUri: 'https://github.com/algorandfoundation/ARCs',
+      tokenUri: tokenUri,
       image: concat(concat(concat(concat(concat(substring3(template, 0, 205), backgroundColor), concat(substring3(template, 205, 238), translateX)), concat(' ', translateY)), concat(substring3(template, 239, 568), objectColor)), substring3(template, 568, 587)),
       control: globals.zeroAddress,
     };
