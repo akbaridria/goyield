@@ -18,7 +18,8 @@ export async function getWinAmount() {
     algodClient,
   );
   
-  const amount = (await hub.getGlobalState()).winAmount || BigInt(0)
+  const amount = (await hub.getGlobalState()).winAmount?.asBigInt() || BigInt(0)
+  console.log(amount)
   return Number(amount);
   
 }

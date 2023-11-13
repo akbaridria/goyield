@@ -37,10 +37,9 @@ class nftHub extends Contract {
     this.winAmount.value = value;
   }
 
-  checkWinner(tokenId: uint64, value: uint64): void {
+  checkWinner(tokenId: uint64): void {
     const nftAppId = this.nftAppId.value;
     const vrfAppId = this.vrfAppId.value;
-    const prevBalance = this.balance.value;
 
     const data = sendMethodCall<[uint64], Address>({
       name: 'arc72_ownerOf',
@@ -62,7 +61,6 @@ class nftHub extends Contract {
         }
       }
       if (this.claimed.value[indexWinner] === 1001) {
-        this.balance.value = prevBalance - value;
         this.claimed.value[indexWinner] = dataWinner[indexWinner];
       } else throw Error('not a winner');
     } else throw Error('not nft owner');

@@ -23,7 +23,6 @@ export async function checkInterest() {
     algodClient,
   );
   const balance = (await hub.getGlobalState()).balance?.asBigInt() || BigInt(0);
-  console.log(balance)
   const reward = d[0].holdings[0].assetBalance - balance
   return { balance, reward};
 }

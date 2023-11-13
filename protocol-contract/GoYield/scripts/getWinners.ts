@@ -10,17 +10,11 @@ require('dotenv').config();
 
 export function uint8ArrayToIntegerArray(uint8Array: Uint8Array) {
   const newArray = new Array(length); // Initialize the newArray variable.
-
+  const buffer = Buffer.from(uint8Array);
   for (let i = 0; i < uint8Array.length; i += 8) {
-    const chunk = uint8Array.subarray(i, i + 8);
+    newArray[i/8] = buffer.readBigUInt64BE(i)
 
-    // Convert the chunk to a number using a DataView.
-    const dataView = new DataView(chunk.buffer);
-    const number = dataView.getBigUint64(0);
-
-    newArray[i / 8] = number;
   }
-
   return newArray;
 }
 
@@ -40,11 +34,9 @@ export async function getWinners() {
   );
   const d = (await vrf.getGlobalState()).winnerNumbers?.asByteArray();
   if(!!d) {
-    console.log('here')
-    console.log(uint8ArrayToIntegerArray(d as Uint8Array))
+    const test = uint8ArrayToIntegerArray(d as Uint8Array)
     return uint8ArrayToIntegerArray(d as Uint8Array);
   } else {
-    console.log(d)
     return []
   }
 }

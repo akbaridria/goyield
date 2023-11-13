@@ -21,8 +21,8 @@ async function main() {
     },
     algodClient,
   );
-
-  const d = await vrf.upateRound({ value: 34355937 });
+  
+  const d = await vrf.upateRound({ value: 34539760 });
   console.log(d);
 }
 
