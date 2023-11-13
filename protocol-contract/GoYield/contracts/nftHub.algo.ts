@@ -11,6 +11,8 @@ class nftHub extends Contract {
 
   claimed = GlobalStateKey<StaticArray<uint64, 3>>();
 
+  winAmount = GlobalStateKey<uint64>();
+
   createApplication(nftAppId: uint64, vrfAppId: uint64): void {
     this.claimed.value = [1001, 1001, 1001];
     this.nftAppId.value = nftAppId;
@@ -23,6 +25,16 @@ class nftHub extends Contract {
     const prevBalance = this.balance.value;
 
     this.balance.value = prevBalance + value;
+  }
+
+  setClaimedDefault(): void {
+    assert(this.txn.sender === this.app.creator);
+    this.claimed.value = [1001, 1001, 1001];
+  }
+
+  setwinAmount(value: uint64): void {
+    assert(this.txn.sender === this.app.creator);
+    this.winAmount.value = value;
   }
 
   checkWinner(tokenId: uint64, value: uint64): void {

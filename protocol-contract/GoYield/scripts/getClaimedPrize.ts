@@ -7,27 +7,32 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import algosdk from "algosdk";
 import dataContract from "../data/contracts.json";
-import { GoYieldNftClient } from "../contracts/clients/GoYieldNFTClient";
+import { NftHubClient } from "../contracts/clients/NftHubClient";
+import { uint8ArrayToIntegerArray } from '../scripts/getWinners';
+
 require('dotenv').config();
 
-async function main() {
-  const passphrase2 = process.env.SEED_PHRASE;
+export async function getClaimedPrize() {
+  const passphrase2 = process.env.NEXT_PUBLIC_ESCROW;
 
   const accountTest = algosdk.mnemonicToSecretKey(passphrase2 as string);
 
   const algodClient = new algosdk.Algodv2('a'.repeat(64), 'https://testnet-api.algonode.cloud', '');
-  const nftAppId = dataContract.contracts.nft.appId;
+  const hubAppId = dataContract.contracts.hub.appId;
 
-  const nft = new GoYieldNftClient(
+  const hub = new NftHubClient(
     {
       sender: accountTest,
       resolveBy: 'id',
-      id: dataContract.contracts.nft.appId,
+      id: hubAppId,
     },
     algodClient,
   );
-  const e = await nft.arc72GetImage({ _tokenId: 0 }, { boxes: [{ appId: nftAppId, name: algosdk.encodeUint64(0) }] });
-  console.log(e);
-}
 
-main();
+  const d = (await hub.getGlobalState()).claimed?.asByteArray();
+  if(!!d) {
+    return uint8ArrayToIntegerArray(d).map((item) => Number(item))
+  } else {
+    return []
+  }
+}

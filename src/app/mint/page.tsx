@@ -13,7 +13,7 @@ import { LoadingMint } from "./interfaces/mintInterface";
 
 /* eslint-disable @next/next/no-img-element */
 export const Mint = () => {
-  const { signer, activeAddress, status } = useWallet();
+  const { signer, activeAddress, isActive } = useWallet();
 
   const [color, setColor] = useState('#BB004B');
   const [background, setBackground] = useState('#FF0066');
@@ -77,6 +77,11 @@ export const Mint = () => {
 
   return (
     <div className="min-h-screen">
+      {
+        !isActive && <div className="p-2 bg-red-500 text-center">
+        Wallet not connected
+      </div>
+      }
       <div className="w-[450px] max-w-full rounded-lg shadow-lg my-8 mx-auto border-[1px] border-greyHalf shadow-lg">
         <NftSample customClass="w-full rounded-tl-lg rounded-tr-lg transition-all" color={color} background={background} />
         <div className="p-4">
@@ -87,7 +92,7 @@ export const Mint = () => {
             A unique GoYieldNFT representing ownership in the GoYieldNFT ecosystem. Holders have the opportunity to earn passive income and participate in the NFT marketplace revenue sharing program.
           </div>
         </div>
-       <button onClick={submit} className={`p-4 rounded-bl-lg rounded-br-lg w-full flex items-center justify-center font-semibold ${loading.loadingMetada || loading.loadingTokenId || loading.loadingTx ? 'pointer-events-none opacity-[0.5]': null }`} style={{ background: 'linear-gradient(58deg, #2600FC 0%, #FF00EA 100%)'}}>
+       <button onClick={submit} className={`p-4 rounded-bl-lg rounded-br-lg w-full flex items-center justify-center font-semibold ${loading.loadingMetada || loading.loadingTokenId || loading.loadingTx || !isActive ? 'pointer-events-none opacity-[0.5]': null }`} style={{ background: 'linear-gradient(58deg, #2600FC 0%, #FF00EA 100%)'}}>
         { loading.loadingMetada || loading.loadingTokenId || loading.loadingTx ? <Spinner /> : null } Mint Now 
        </button>
       </div>

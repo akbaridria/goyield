@@ -32,8 +32,6 @@ export async function mintNft(signer: algosdk.TransactionSigner, senderAddr: str
   const passphrase = process.env.NEXT_PUBLIC_ESCROW;
   const passphrase2 = process.env.NEXT_PUBLIC_SEED_PHRASE;
   const passphrase3 = process.env.NEXT_PUBLIC_ESCROW_FOLK;
-  const jwtPinataKey = process.env.NEXT_PUBLIC_PINATA;
-
 
   const account = algosdk.mnemonicToSecretKey(passphrase as string);
   const accountTest = algosdk.mnemonicToSecretKey(passphrase2 as string);
@@ -99,7 +97,7 @@ export async function mintNft(signer: algosdk.TransactionSigner, senderAddr: str
   atc.addMethodCall({
     appID: dataContract.contracts.hub.appId,
     method: hub.appClient.getABIMethod('depositToFolk') as algosdk.ABIMethod,
-    methodArgs: [100_000],
+    methodArgs: [5_000_000],
     sender: account.addr,
     signer: algosdk.makeBasicAccountTransactionSigner(account),
     suggestedParams: { ...params, fee: 2000, flatFee: true },

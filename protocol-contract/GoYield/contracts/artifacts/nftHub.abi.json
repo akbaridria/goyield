@@ -38,6 +38,30 @@
       }
     },
     {
+      "name": "setClaimedDefault",
+      "args": [],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
+      "name": "setwinAmount",
+      "args": [
+        {
+          "name": "value",
+          "type": "uint64",
+          "desc": ""
+        }
+      ],
+      "desc": "",
+      "returns": {
+        "type": "void",
+        "desc": ""
+      }
+    },
+    {
       "name": "checkWinner",
       "args": [
         {

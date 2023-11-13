@@ -40,19 +40,19 @@ abi_route_createApplication:
 createApplication:
 	proto 2 0
 
-	// contracts/nftHub.algo.ts:15
+	// contracts/nftHub.algo.ts:17
 	// this.claimed.value = [1001, 1001, 1001]
 	byte 0x636c61696d6564 // "claimed"
 	byte 0x00000000000003e900000000000003e900000000000003e9
 	app_global_put
 
-	// contracts/nftHub.algo.ts:16
+	// contracts/nftHub.algo.ts:18
 	// this.nftAppId.value = nftAppId
 	byte 0x6e66744170704964 // "nftAppId"
 	frame_dig -1 // nftAppId: uint64
 	app_global_put
 
-	// contracts/nftHub.algo.ts:17
+	// contracts/nftHub.algo.ts:19
 	// this.vrfAppId.value = vrfAppId
 	byte 0x7672664170704964 // "vrfAppId"
 	frame_dig -2 // vrfAppId: uint64
@@ -75,7 +75,7 @@ abi_route_depositToFolk:
 depositToFolk:
 	proto 2 0
 
-	// contracts/nftHub.algo.ts:21
+	// contracts/nftHub.algo.ts:23
 	// assert(this.txn.sender === this.app.creator)
 	txn Sender
 	txna Applications 0
@@ -84,18 +84,74 @@ depositToFolk:
 	==
 	assert
 
-	// contracts/nftHub.algo.ts:23
+	// contracts/nftHub.algo.ts:25
 	// prevBalance = this.balance.value
 	byte 0x62616c616e6365 // "balance"
 	app_global_get
 	frame_bury -2 // prevBalance: uint64
 
-	// contracts/nftHub.algo.ts:25
+	// contracts/nftHub.algo.ts:27
 	// this.balance.value = prevBalance + value
 	byte 0x62616c616e6365 // "balance"
 	frame_dig -2 // prevBalance: uint64
 	frame_dig -1 // value: uint64
 	+
+	app_global_put
+	retsub
+
+// setClaimedDefault()void
+abi_route_setClaimedDefault:
+	// execute setClaimedDefault()void
+	callsub setClaimedDefault
+	int 1
+	return
+
+setClaimedDefault:
+	proto 0 0
+
+	// contracts/nftHub.algo.ts:31
+	// assert(this.txn.sender === this.app.creator)
+	txn Sender
+	txna Applications 0
+	app_params_get AppCreator
+	assert
+	==
+	assert
+
+	// contracts/nftHub.algo.ts:32
+	// this.claimed.value = [1001, 1001, 1001]
+	byte 0x636c61696d6564 // "claimed"
+	byte 0x00000000000003e900000000000003e900000000000003e9
+	app_global_put
+	retsub
+
+// setwinAmount(uint64)void
+abi_route_setwinAmount:
+	// value: uint64
+	txna ApplicationArgs 1
+	btoi
+
+	// execute setwinAmount(uint64)void
+	callsub setwinAmount
+	int 1
+	return
+
+setwinAmount:
+	proto 1 0
+
+	// contracts/nftHub.algo.ts:36
+	// assert(this.txn.sender === this.app.creator)
+	txn Sender
+	txna Applications 0
+	app_params_get AppCreator
+	assert
+	==
+	assert
+
+	// contracts/nftHub.algo.ts:37
+	// this.winAmount.value = value
+	byte 0x77696e416d6f756e74 // "winAmount"
+	frame_dig -1 // value: uint64
 	app_global_put
 	retsub
 
@@ -119,25 +175,25 @@ abi_route_checkWinner:
 checkWinner:
 	proto 9 0
 
-	// contracts/nftHub.algo.ts:29
+	// contracts/nftHub.algo.ts:41
 	// nftAppId = this.nftAppId.value
 	byte 0x6e66744170704964 // "nftAppId"
 	app_global_get
 	frame_bury -3 // nftAppId: uint64
 
-	// contracts/nftHub.algo.ts:30
+	// contracts/nftHub.algo.ts:42
 	// vrfAppId = this.vrfAppId.value
 	byte 0x7672664170704964 // "vrfAppId"
 	app_global_get
 	frame_bury -4 // vrfAppId: uint64
 
-	// contracts/nftHub.algo.ts:31
+	// contracts/nftHub.algo.ts:43
 	// prevBalance = this.balance.value
 	byte 0x62616c616e6365 // "balance"
 	app_global_get
 	frame_bury -5 // prevBalance: uint64
 
-	// contracts/nftHub.algo.ts:33
+	// contracts/nftHub.algo.ts:45
 	// data = sendMethodCall<[uint64], Address>({
 	//       name: 'arc72_ownerOf',
 	//       applicationID: Application.fromID(nftAppId),
@@ -149,12 +205,12 @@ checkWinner:
 	method "arc72_ownerOf(uint64)address"
 	itxn_field ApplicationArgs
 
-	// contracts/nftHub.algo.ts:35
+	// contracts/nftHub.algo.ts:47
 	// applicationID: Application.fromID(nftAppId)
 	frame_dig -3 // nftAppId: uint64
 	itxn_field ApplicationID
 
-	// contracts/nftHub.algo.ts:36
+	// contracts/nftHub.algo.ts:48
 	// methodArgs: [tokenId]
 	frame_dig -1 // tokenId: uint64
 	itob
@@ -173,7 +229,7 @@ checkWinner:
 	extract 4 0
 	frame_bury -6 // data: address
 
-	// contracts/nftHub.algo.ts:39
+	// contracts/nftHub.algo.ts:51
 	// dataWinner = sendMethodCall<[], StaticArray<uint64, 3>>({
 	//       name: 'getWinners',
 	//       applicationID: Application.fromID(vrfAppId),
@@ -185,12 +241,12 @@ checkWinner:
 	method "getWinners()uint64[3]"
 	itxn_field ApplicationArgs
 
-	// contracts/nftHub.algo.ts:41
+	// contracts/nftHub.algo.ts:53
 	// applicationID: Application.fromID(vrfAppId)
 	frame_dig -4 // vrfAppId: uint64
 	itxn_field ApplicationID
 
-	// contracts/nftHub.algo.ts:42
+	// contracts/nftHub.algo.ts:54
 	// methodArgs: []
 	// Fee field not set, defaulting to 0
 	int 0
@@ -206,7 +262,7 @@ checkWinner:
 	frame_bury -7 // dataWinner: uint64[3]
 
 	// if0_condition
-	// contracts/nftHub.algo.ts:45
+	// contracts/nftHub.algo.ts:57
 	// this.txn.sender === data
 	txn Sender
 	frame_dig -6 // data: address
@@ -214,12 +270,12 @@ checkWinner:
 	bz if0_else
 
 	// if0_consequent
-	// contracts/nftHub.algo.ts:46
+	// contracts/nftHub.algo.ts:58
 	// indexWinner = 1001
 	int 1001
 	frame_bury -8 // indexWinner: uint64
 
-	// contracts/nftHub.algo.ts:47
+	// contracts/nftHub.algo.ts:59
 	// i = 0
 	int 0
 	frame_bury -9 // i: uint64
@@ -231,7 +287,7 @@ for_0:
 	bz for_0_end
 
 	// if1_condition
-	// contracts/nftHub.algo.ts:48
+	// contracts/nftHub.algo.ts:60
 	// tokenId === dataWinner[i]
 	frame_dig -1 // tokenId: uint64
 	frame_dig -7 // dataWinner: uint64[3]
@@ -250,13 +306,13 @@ for_0:
 	bz if1_end
 
 	// if1_consequent
-	// contracts/nftHub.algo.ts:49
+	// contracts/nftHub.algo.ts:61
 	// indexWinner = i
 	frame_dig -9 // i: uint64
 	frame_bury -8 // indexWinner: uint64
 
 if1_end:
-	// contracts/nftHub.algo.ts:47
+	// contracts/nftHub.algo.ts:59
 	// i = i + 1
 	frame_dig -9 // i: uint64
 	int 1
@@ -266,7 +322,7 @@ if1_end:
 
 for_0_end:
 	// if2_condition
-	// contracts/nftHub.algo.ts:52
+	// contracts/nftHub.algo.ts:64
 	// this.claimed.value[indexWinner] === 1001
 	byte 0x636c61696d6564 // "claimed"
 	app_global_get
@@ -286,7 +342,7 @@ for_0_end:
 	bz if2_else
 
 	// if2_consequent
-	// contracts/nftHub.algo.ts:53
+	// contracts/nftHub.algo.ts:65
 	// this.balance.value = prevBalance - value
 	byte 0x62616c616e6365 // "balance"
 	frame_dig -5 // prevBalance: uint64
@@ -294,7 +350,7 @@ for_0_end:
 	-
 	app_global_put
 
-	// contracts/nftHub.algo.ts:54
+	// contracts/nftHub.algo.ts:66
 	// this.claimed.value[indexWinner] = dataWinner[indexWinner]
 	byte 0x636c61696d6564 // "claimed"
 	app_global_get
@@ -345,7 +401,9 @@ create_NoOp:
 
 call_NoOp:
 	method "depositToFolk(uint64)void"
+	method "setClaimedDefault()void"
+	method "setwinAmount(uint64)void"
 	method "checkWinner(uint64,uint64)void"
 	txna ApplicationArgs 0
-	match abi_route_depositToFolk abi_route_checkWinner
+	match abi_route_depositToFolk abi_route_setClaimedDefault abi_route_setwinAmount abi_route_checkWinner
 	err
