@@ -13,7 +13,7 @@ GoYieldNFT is dedicated to creating a robust ecosystem where NFT holders can ben
 
 ## Illustration
 
-![flow-chart-goyield](https://github.com/akbaridria/goyield/assets/26589426/a5db1ffd-c992-4a49-8c52-e759f4c2927b)
+![flow-chart-goyield](https://github.com/akbaridria/goyield/assets/26589426/1936631b-1734-4dd1-8c5e-ab333e95a0b5)
 
 ## Smart Contracts
 
