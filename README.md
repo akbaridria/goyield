@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GoYieldNFT
 
-## Getting Started
+Welcome to GoYieldNFT, an innovative project leveraging the power of the Algorand blockchain to revolutionize NFT ownership and passive income.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+GoYieldNFT is dedicated to creating a robust ecosystem where NFT holders can benefit from passive income streams while shaping the future of digital ownership. With a focus on generating yields and building an inclusive NFT marketplace, our project aims to redefine the NFT landscape on Algorand.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **TealScript**: Utilizing TealScript for creating smart contracts and powering the logic behind GoYieldNFT functionalities.
+- **Pinata/IPFS**: Leveraging Pinata and IPFS for decentralized storage, ensuring the immutability and availability of NFT data and assets.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Smart Contracts
 
-## Learn More
+### Contract IDs and Addresses:
 
-To learn more about Next.js, take a look at the following resources:
+- **NFT Contract**:
+  - **App ID**: 479392712
+  - **App Address**: `BTTTFGS2NNNNZ7BDGDOR7B5TRTXD3X6NWEDCWBNHW7Y4EFRBOTHZXML4DA`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Hub Contract**:
+  - **App ID**: 479393551
+  - **App Address**: `53TUBNT2I4NCHJWXEKHJ2CTRAMDSOZSECXOOTFMDR23TBBAJVNRJO62OL4`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **VRF Contract**:
+  - **App ID**: 479393316
+  - **App Address**: `VZEBX3EFDNGUU4FLLA2EWU27XGPZ3HDU6XEMND6JOUYGZNLF5V4BNWXAYI`
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **On-Chain Artistry**: Unique NFTs generated directly on the blockchain for authenticity and immutability.
+- **Efficient Contract Structure**: Streamlined contract setup for simplified interactions using Algorand's Box Storage.
+- **Passive Income Opportunities**: Holders earn rewards by simply owning GoYieldNFTs.
+- **Community-Centric Ecosystem**: An inclusive NFT marketplace shares revenue with all holders, fostering a sustainable community.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Roadmap
+
+1. **Planning**: Defining project goals, market research, and community engagement.
+2. **Development**: Building the core infrastructure and smart contracts for GoYieldNFT.
+3. **Launch Testnet**: Rigorous testing of platform functionalities for a seamless user experience.
+4. **Launch Mainnet**: Official release of GoYieldNFT for public interaction and NFT ownership.
+5. **Build NFT Marketplace**: Creation of a user-friendly marketplace for NFT trading and engagement.
+6. **Launch NFT Marketplace**: Official launch of the GoYieldNFT marketplace, sharing revenue with holders.

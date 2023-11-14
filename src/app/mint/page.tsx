@@ -10,6 +10,7 @@ import { randomColor } from "@/scripts/utils";
 import { PropsMint } from "../globalInterface";
 import ModalTx from "./component/ModalTx";
 import { LoadingMint } from "./interfaces/mintInterface";
+import { Logo } from "@/components/Logo";
 
 /* eslint-disable @next/next/no-img-element */
 export const Mint = () => {

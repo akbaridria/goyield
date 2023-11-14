@@ -57,7 +57,7 @@ export const DetailNFT = () => {
   console.log(data, isLoading, error)
   return (
     <div className="container mx-auto p-4 min-h-screen mt-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="rounded-lg bg-gray-800 shadow-md">
           <div>
             <div className="flex items-center gap-2 m-4">
