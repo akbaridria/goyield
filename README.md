@@ -6,6 +6,7 @@ Welcome to GoYieldNFT, an innovative project leveraging the power of the Algoran
 
 GoYieldNFT is dedicated to creating a robust ecosystem where NFT holders can benefit from passive income streams while shaping the future of digital ownership. With a focus on generating yields and building an inclusive NFT marketplace, our project aims to redefine the NFT landscape on Algorand.
 
+you can try the demo app [here](https://goyield-1kjcu178f-akbaridria.vercel.app/)
 ## Tech Stack
 
 - **TealScript**: Utilizing TealScript for creating smart contracts and powering the logic behind GoYieldNFT functionalities.
