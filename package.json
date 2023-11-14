@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@algorandfoundation/algokit-client-generator": "^2.2.5",
     "@algorandfoundation/algokit-utils": "^4.1.0",
     "@algorandfoundation/tealscript": "^0.62.1",
     "@blockshake/defly-connect": "^1.1.6",
