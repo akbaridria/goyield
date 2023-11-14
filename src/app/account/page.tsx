@@ -9,7 +9,7 @@ import { trimWallet } from "@/scripts/utils";
 import { getListNft } from "../../../protocol-contract/GoYield/scripts/getListNfts";
 import { SkeletonNftComponent } from "./components/SkeletonNftComponent";
 
-export const Account = () => {
+export default function Account() {
   const { activeAddress, isActive } = useWallet()
   const [listNfts, setListNfts] = useState<number[]>([]);
   const [loading, setLoading] = useState(false);
@@ -83,5 +83,3 @@ export const Account = () => {
     </div>
   )
 }
-
-export default Account;

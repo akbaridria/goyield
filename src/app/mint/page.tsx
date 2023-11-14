@@ -13,7 +13,7 @@ import { LoadingMint } from "./interfaces/mintInterface";
 import { Logo } from "@/components/Logo";
 
 /* eslint-disable @next/next/no-img-element */
-export const Mint = () => {
+export default function Mint() {
   const { signer, activeAddress, isActive } = useWallet();
 
   const [color, setColor] = useState('#BB004B');
@@ -103,5 +103,3 @@ export const Mint = () => {
     </div>
   )
 }
-
-export default Mint;

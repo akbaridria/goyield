@@ -16,7 +16,7 @@ import { getNameTokenId } from "@/scripts/utils";
 import { claim } from "../../../protocol-contract/GoYield/scripts/claim";
 import ModalSuccessTx from "./components/ModalSuccessTx";
 
-export const Reward = () => {
+export default function Reward() {
   const { isActive, activeAddress, signer } = useWallet()
   const [reward, setReward] = useState(BigInt(0));
   const [balance, setBalance] = useState(BigInt(0));
@@ -209,5 +209,3 @@ export const Reward = () => {
     </div>
   )
 }
-
-export default Reward;

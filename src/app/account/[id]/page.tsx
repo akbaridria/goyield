@@ -19,7 +19,7 @@ interface PropsTrait {
   translateY: number
 }
 
-export const DetailNft = () => {
+export default function DetailNft() {
   const params = useParams()
   const [image, setImage] = useState('');
   const [cid, setCid] = useState('')
@@ -177,6 +177,4 @@ export const DetailNft = () => {
       </div>
     </div>
   );
-};
-
-export default DetailNft;
+}
