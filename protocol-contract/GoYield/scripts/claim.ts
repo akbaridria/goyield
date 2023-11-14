@@ -32,7 +32,7 @@ export async function claim(signer: algosdk.TransactionSigner, senderAddr: strin
   atc.addMethodCall({
     appID: dataContract.contracts.hub.appId,
     method: hub.appClient.getABIMethod('checkWinner') as algosdk.ABIMethod,
-    methodArgs: [tokenId, amount],
+    methodArgs: [tokenId],
     sender: senderAddr,
     signer: signer,
     suggestedParams: { ...params, fee: 4000, flatFee: true },

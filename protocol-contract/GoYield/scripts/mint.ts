@@ -86,8 +86,8 @@ export async function mintNft(signer: algosdk.TransactionSigner, senderAddr: str
   atc.addMethodCall({
     appID: dataContract.contracts.nft.appId,
     method: nft.appClient.getABIMethod('mint') as algosdk.ABIMethod,
-    methodArgs: [extraData.randColor1, extraData.randColor2, `${extraData.randNumber1}`, `${extraData.randNumber2}`, extraData.tokenUri, accountTest.addr],
-    boxes: [{ appIndex: nftAppId, name: combined }, { appIndex: nftAppId, name: algosdk.encodeUint64(extraData.tokenId) }, { appIndex: nftAppId, name: algosdk.decodeAddress(accountTest.addr).publicKey }],
+    methodArgs: [extraData.randColor1, extraData.randColor2, `${extraData.randNumber1}`, `${extraData.randNumber2}`, extraData.tokenUri, senderAddr],
+    boxes: [{ appIndex: nftAppId, name: combined }, { appIndex: nftAppId, name: algosdk.encodeUint64(extraData.tokenId) }, { appIndex: nftAppId, name: algosdk.decodeAddress(senderAddr).publicKey }],
     sender: account.addr,
     signer: algosdk.makeBasicAccountTransactionSigner(account),
     suggestedParams: { ...params, fee: 2000, flatFee: true },

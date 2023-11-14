@@ -68,11 +68,6 @@
           "name": "tokenId",
           "type": "uint64",
           "desc": ""
-        },
-        {
-          "name": "value",
-          "type": "uint64",
-          "desc": ""
         }
       ],
       "desc": "",
