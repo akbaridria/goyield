@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { Bars3, Chevron, Details, NftSample, RectangleGroup, User } from "@/components/Icons";
+import { Bars3, Details, RectangleGroup } from "@/components/Icons";
 import { useEffect, useState } from "react";
 import datas from '../../../../protocol-contract/GoYield/data/contracts.json';
 import { useParams } from "next/navigation";
@@ -19,7 +19,7 @@ interface PropsTrait {
   translateY: number
 }
 
-export const DetailNFT = () => {
+export const DetailNft = () => {
   const params = useParams()
   const [image, setImage] = useState('');
   const [cid, setCid] = useState('')
@@ -179,4 +179,4 @@ export const DetailNFT = () => {
   );
 };
 
-export default DetailNFT;
+export default DetailNft;
