@@ -11,9 +11,13 @@ GoYieldNFT is dedicated to creating a robust ecosystem where NFT holders can ben
 - **TealScript**: Utilizing TealScript for creating smart contracts and powering the logic behind GoYieldNFT functionalities.
 - **Pinata/IPFS**: Leveraging Pinata and IPFS for decentralized storage, ensuring the immutability and availability of NFT data and assets.
 
+## Illustration
+
+![flow-chart-goyield](https://github.com/akbaridria/goyield/assets/26589426/a5db1ffd-c992-4a49-8c52-e759f4c2927b)
+
 ## Smart Contracts
 
-### Contract IDs and Addresses:
+### Contract IDs and Addresses (Testnet):
 
 - **NFT Contract**:
   - **App ID**: 479392712
