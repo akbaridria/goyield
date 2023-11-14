@@ -89,6 +89,7 @@ export const Mint = () => {
           <div className="text-xl font-bold text-transparent bg-clip-text duration-500 bg-gradient-to-r to-[#FF00EA] via-[#2600FC] from-[#FF00EA] bg-size-200 bg-pos-0 hover:bg-pos-100">
             GoYieldNFT
           </div>
+          <div className="my-2 font-semibold">Price 10 $ALGO</div>
           <div className="font-semibold opacity-[0.5]">
             A unique GoYieldNFT representing ownership in the GoYieldNFT ecosystem. Holders have the opportunity to earn passive income and participate in the NFT marketplace revenue sharing program.
           </div>
