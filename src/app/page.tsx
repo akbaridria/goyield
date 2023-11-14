@@ -40,7 +40,7 @@ export default function Home() {
                   </div>
                 </Button>
               </Link>
-              <Link href="#" className="flex items-center gap-1">Learn More <Arrow customClass="w-5 h-5 rotate-[315deg]" /> </Link>
+              <Link href="https://github.com/akbaridria/goyield#readme" target="_blank" className="flex items-center gap-1">Learn More <Arrow customClass="w-5 h-5 rotate-[315deg]" /> </Link>
             </div>
           </div>
           <div className="flex items-center justify-center">
